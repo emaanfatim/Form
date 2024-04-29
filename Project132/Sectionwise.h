@@ -2,305 +2,384 @@
 
 namespace Project132 {
 
-	using namespace System;
-	using namespace System::ComponentModel;
-	using namespace System::Collections;
-	using namespace System::Windows::Forms;
-	using namespace System::Data;
-	using namespace System::Drawing;
+    using namespace System;
+    using namespace System::Windows::Forms;
 
-	/// <summary>
-	/// Summary for Sectionwise
-	/// </summary>
-	public ref class Sectionwise : public System::Windows::Forms::Form
-	{
-	public:
-		Sectionwise(void)
-		{
-			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
-		}
+    public ref class Sectionwise : public System::Windows::Forms::Form
+    {
+    public:
+        Sectionwise(void)
+        {
+            InitializeComponent();
+            // Initialize the timetable with data for 5 students
+            InitializeTimetable();
+        }
 
-	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		~Sectionwise()
-		{
-			if (components)
-			{
-				delete components;
-			}
-		}
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::TextBox^ textBox3;
-	private: System::Windows::Forms::TextBox^ textBox4;
-	private: System::Windows::Forms::TextBox^ textBox5;
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ button3;
-	protected:
+    protected:
 
-	private:
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		System::ComponentModel::Container ^components;
+        ~Sectionwise()
+        {
+            // Destructor code
+        }
 
-#pragma region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		void InitializeComponent(void)
-		{
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->SuspendLayout();
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(36, 24);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(229, 25);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"Sectionwise Timetable";
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(38, 73);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(64, 16);
-			this->label2->TabIndex = 1;
-			this->label2->Text = L"Teacher :";
-			this->label2->Click += gcnew System::EventHandler(this, &Sectionwise::label2_Click);
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(38, 99);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(56, 16);
-			this->label3->TabIndex = 2;
-			this->label3->Text = L"Course :";
-			// 
-			// label4
-			// 
-			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(38, 130);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(78, 16);
-			this->label4->TabIndex = 3;
-			this->label4->Text = L"Classroom :";
-			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(38, 156);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(38, 16);
-			this->label5->TabIndex = 4;
-			this->label5->Text = L"Day :";
-			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(38, 187);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(44, 16);
-			this->label6->TabIndex = 5;
-			this->label6->Text = L"Time :";
-			// 
-			// textBox1
-			// 
-			this->textBox1->Location = System::Drawing::Point(122, 67);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(138, 22);
-			this->textBox1->TabIndex = 6;
-			this->textBox1->TextChanged += gcnew System::EventHandler(this, &Sectionwise::textBox1_TextChanged);
-			// 
-			// textBox2
-			// 
-			this->textBox2->Location = System::Drawing::Point(122, 99);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(138, 22);
-			this->textBox2->TabIndex = 7;
-			// 
-			// textBox3
-			// 
-			this->textBox3->Location = System::Drawing::Point(122, 127);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(138, 22);
-			this->textBox3->TabIndex = 8;
-			// 
-			// textBox4
-			// 
-			this->textBox4->Location = System::Drawing::Point(122, 156);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(138, 22);
-			this->textBox4->TabIndex = 9;
-			// 
-			// textBox5
-			// 
-			this->textBox5->Location = System::Drawing::Point(122, 187);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(138, 22);
-			this->textBox5->TabIndex = 10;
-			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(12, 266);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
-			this->button1->TabIndex = 11;
-			this->button1->Text = L"Add";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &Sectionwise::button1_Click);
-			// 
-			// button2
-			// 
-			this->button2->Location = System::Drawing::Point(105, 266);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 23);
-			this->button2->TabIndex = 12;
-			this->button2->Text = L"Showdata";
-			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &Sectionwise::button2_Click);
-			// 
-			// button3
-			// 
-			this->button3->Location = System::Drawing::Point(206, 266);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(75, 23);
-			this->button3->TabIndex = 13;
-			this->button3->Text = L"Remove";
-			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &Sectionwise::button3_Click);
-			// 
-			// Sectionwise
-			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
-			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(312, 334);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->textBox5);
-			this->Controls->Add(this->textBox4);
-			this->Controls->Add(this->textBox3);
-			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->textBox1);
-			this->Controls->Add(this->label6);
-			this->Controls->Add(this->label5);
-			this->Controls->Add(this->label4);
-			this->Controls->Add(this->label3);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->label1);
-			this->Name = L"Sectionwise";
-			this->Text = L"Sectionwise";
-			this->ResumeLayout(false);
-			this->PerformLayout();
+    private:
+        // Data for students
+        array<String^>^ studentNames;
+        array<String^>^ studentCourses;
+        array<String^>^ studentSections;
+        array<String^>^ studentDays;
+        array<String^>^ studentTimes;
+    private: System::Windows::Forms::Label^ label1;
+    private: System::ComponentModel::BackgroundWorker^ backgroundWorker1;
+           int numberOfStudents; // To keep track of the number of students
 
-		}
-#pragma endregion
-		String^ enteredName;
-	
-		String^ enteredCourse;
-		String^ enteredRoom;
-	
-		String^ enteredDay;
-		String^ enteredTime;
-	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+           /// <summary>
+           /// Initialize the timetable with data for 5 students
+           /// </summary>
+           void InitializeTimetable() {
+               numberOfStudents = 5;
+               studentNames = gcnew array<String^>(numberOfStudents);
+               studentCourses = gcnew array<String^>(numberOfStudents);
+               studentSections = gcnew array<String^>(numberOfStudents);
+               studentDays = gcnew array<String^>(numberOfStudents);
+               studentTimes = gcnew array<String^>(numberOfStudents);
 
-	if (this->textBox1->Text->Trim() == "") {
-		MessageBox::Show("Please enter name", "Validation", MessageBoxButtons::OK, MessageBoxIcon::Error);
-	}
-	
-	else if (this->textBox2->Text->Trim() == "") {
-		MessageBox::Show("Please enter course name", "Validation", MessageBoxButtons::OK, MessageBoxIcon::Error);
-	}
-	else if (this->textBox3->Text->Trim() == "") {
-		MessageBox::Show("Please enter room name", "Validation", MessageBoxButtons::OK, MessageBoxIcon::Error);
-	}
-	
+               // Initialize data for 5 students
+               studentNames[0] = "Emaan";
+               studentCourses[0] = "DS";
+               studentSections[0] = "B";
+               studentDays[0] = "Monday";
+               studentTimes[0] = "11:00 AM";
 
-	else if (this->textBox4->Text->Trim() == "") {
-		MessageBox::Show("Please enter day", "Validation", MessageBoxButtons::OK, MessageBoxIcon::Error);
-	}
-	else if (this->textBox5->Text->Trim() == "") {
-		MessageBox::Show("Please enter time", "Validation", MessageBoxButtons::OK, MessageBoxIcon::Error);
-	}
-	else {
-		// Store the entered data in variables
-		enteredName = this->textBox1->Text;
-		
+               studentNames[1] = "Madeiha";
+               studentCourses[1] = "DS";
+               studentSections[1] = "A";
+               studentDays[1] = "Tuesday";
+               studentTimes[1] = "12:00 PM";
 
-		enteredCourse = this->textBox2->Text;
-		enteredRoom = this->textBox3->Text;
+               studentNames[2] = "John";
+               studentCourses[2] = "Math";
+               studentSections[2] = "A";
+               studentDays[2] = "Wednesday";
+               studentTimes[2] = "1:00 PM";
 
-		enteredDay = this->textBox4->Text;
-		enteredTime = this->textBox5->Text;
-		
-		MessageBox::Show("Data submitted successfully", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
-	}
-}
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ displayMessage = "Name: " + enteredName + "\n"
-		
-		+ "Course: " + enteredCourse + "\n"
-		+ "Room: " + enteredRoom + "\n"
-		+ "Day: " + enteredDay + "\n"
-		+ "Time: " + enteredTime;
-	MessageBox::Show(displayMessage, "Data Entered", MessageBoxButtons::OK, MessageBoxIcon::Information);
+               studentNames[3] = "Alice";
+               studentCourses[3] = "Science";
+               studentSections[3] = "B";
+               studentDays[3] = "Thursday";
+               studentTimes[3] = "2:00 PM";
 
-}
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-	enteredName = "";
-	enteredRoom = "";
-	enteredCourse = "";
-	
-	enteredDay = "";
-	enteredTime = "";
+               studentNames[4] = "Bob";
+               studentCourses[4] = "English";
+               studentSections[4] = "C";
+               studentDays[4] = "Friday";
+               studentTimes[4] = "3:00 PM";
+           }
 
-	// Clear the text boxes after displaying the data
-	this->textBox1->Text = "";
-	this->textBox2->Text = "";
-	this->textBox3->Text = "";
-	this->textBox4->Text = "";
-	this->textBox5->Text = "";
+           /// <summary>
+           /// Display data for all students
+           /// </summary>
+           void DisplayStudentData() {
+               listBoxStudents->Items->Clear(); // Clear existing items
+               for (int i = 0; i < numberOfStudents; i++) {
+                   // Add student names to the list box
+                   listBoxStudents->Items->Add(studentNames[i]);
+               }
+           }
 
+           // Function to add a new student
+           void AddStudent(String^ name, String^ course, String^ section, String^ day, String^ time) {
+               // Resize the arrays to accommodate the new student
+               Array::Resize(studentNames, numberOfStudents + 1);
+               Array::Resize(studentCourses, numberOfStudents + 1);
+               Array::Resize(studentSections, numberOfStudents + 1);
+               Array::Resize(studentDays, numberOfStudents + 1);
+               Array::Resize(studentTimes, numberOfStudents + 1);
 
+               // Add the new student
+               studentNames[numberOfStudents] = name;
+               studentCourses[numberOfStudents] = course;
+               studentSections[numberOfStudents] = section;
+               studentDays[numberOfStudents] = day;
+               studentTimes[numberOfStudents] = time;
 
-	MessageBox::Show("Data Removed", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
-}
-};
+               numberOfStudents++; // Increment the count of students
+           }
+
+           // Function to remove data for a student at a given index
+           void RemoveStudent(int index) {
+               if (index < 0 || index >= numberOfStudents) {
+                   MessageBox::Show("Invalid student index!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+                   return;
+               }
+               // Shift the data of remaining students to fill the gap
+               for (int i = index; i < numberOfStudents - 1; i++) {
+                   studentNames[i] = studentNames[i + 1];
+                   studentCourses[i] = studentCourses[i + 1];
+                   studentSections[i] = studentSections[i + 1];
+                   studentDays[i] = studentDays[i + 1];
+                   studentTimes[i] = studentTimes[i + 1];
+               }
+               // Resize arrays to remove the last element
+               Array::Resize(studentNames, numberOfStudents - 1);
+               Array::Resize(studentCourses, numberOfStudents - 1);
+               Array::Resize(studentSections, numberOfStudents - 1);
+               Array::Resize(studentDays, numberOfStudents - 1);
+               Array::Resize(studentTimes, numberOfStudents - 1);
+
+               numberOfStudents--; // Decrement the count of students
+           }
+
+           System::Void Add_Click(System::Object^ sender, System::EventArgs^ e) {
+               // Add functionality for adding new student data
+               String^ name = textBoxName->Text;
+               String^ course = textBoxCourse->Text;
+               String^ section = textBoxSection->Text;
+               String^ day = textBoxDay->Text;
+               String^ time = textBoxTime->Text;
+               AddStudent(name, course, section, day, time);
+               DisplayStudentData();
+           }
+
+           System::Void Remove_Click(System::Object^ sender, System::EventArgs^ e) {
+               // Remove functionality for removing student data
+               int index = listBoxStudents->SelectedIndex; // Get the selected index from the list box
+               if (index != -1) { // Check if an item is selected
+                   RemoveStudent(index);
+                   DisplayStudentData();
+               }
+               else {
+                   MessageBox::Show("Please select a student to remove.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+               }
+           }
+
+           System::Void Showdata_Click(System::Object^ sender, System::EventArgs^ e) {
+               // Clear the list box
+               listBoxStudents->Items->Clear();
+
+               // Display data for all students
+               for (int i = 0; i < numberOfStudents; i++) {
+                   String^ studentInfo = "Name: " + studentNames[i] + "\n" +
+                       "Course: " + studentCourses[i] + "\n" +
+                       "Section: " + studentSections[i] + "\n" +
+                       "Day: " + studentDays[i] + "\n" +
+                       "Time: " + studentTimes[i];
+                   listBoxStudents->Items->Add(studentInfo);
+               }
+           }
+
+           void InitializeComponent(void)
+           {
+               this->buttonAdd = (gcnew System::Windows::Forms::Button());
+               this->buttonRemove = (gcnew System::Windows::Forms::Button());
+               this->buttonShowData = (gcnew System::Windows::Forms::Button());
+               this->textBoxName = (gcnew System::Windows::Forms::TextBox());
+               this->textBoxCourse = (gcnew System::Windows::Forms::TextBox());
+               this->textBoxSection = (gcnew System::Windows::Forms::TextBox());
+               this->textBoxDay = (gcnew System::Windows::Forms::TextBox());
+               this->textBoxTime = (gcnew System::Windows::Forms::TextBox());
+               this->listBoxStudents = (gcnew System::Windows::Forms::ListBox());
+               this->labelName = (gcnew System::Windows::Forms::Label());
+               this->labelCourse = (gcnew System::Windows::Forms::Label());
+               this->labelSection = (gcnew System::Windows::Forms::Label());
+               this->labelDay = (gcnew System::Windows::Forms::Label());
+               this->labelTime = (gcnew System::Windows::Forms::Label());
+               this->label1 = (gcnew System::Windows::Forms::Label());
+               this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
+               this->SuspendLayout();
+               // 
+               // buttonAdd
+               // 
+               this->buttonAdd->Location = System::Drawing::Point(16, 488);
+               this->buttonAdd->Margin = System::Windows::Forms::Padding(4);
+               this->buttonAdd->Name = L"buttonAdd";
+               this->buttonAdd->Size = System::Drawing::Size(100, 28);
+               this->buttonAdd->TabIndex = 0;
+               this->buttonAdd->Text = L"Add";
+               this->buttonAdd->UseVisualStyleBackColor = true;
+               this->buttonAdd->Click += gcnew System::EventHandler(this, &Sectionwise::Add_Click);
+               // 
+               // buttonRemove
+               // 
+               this->buttonRemove->Location = System::Drawing::Point(164, 488);
+               this->buttonRemove->Margin = System::Windows::Forms::Padding(4);
+               this->buttonRemove->Name = L"buttonRemove";
+               this->buttonRemove->Size = System::Drawing::Size(100, 28);
+               this->buttonRemove->TabIndex = 1;
+               this->buttonRemove->Text = L"Remove";
+               this->buttonRemove->UseVisualStyleBackColor = true;
+               this->buttonRemove->Click += gcnew System::EventHandler(this, &Sectionwise::Remove_Click);
+               // 
+               // buttonShowData
+               // 
+               this->buttonShowData->Location = System::Drawing::Point(310, 488);
+               this->buttonShowData->Margin = System::Windows::Forms::Padding(4);
+               this->buttonShowData->Name = L"buttonShowData";
+               this->buttonShowData->Size = System::Drawing::Size(100, 28);
+               this->buttonShowData->TabIndex = 2;
+               this->buttonShowData->Text = L"Show Data";
+               this->buttonShowData->UseVisualStyleBackColor = true;
+               this->buttonShowData->Click += gcnew System::EventHandler(this, &Sectionwise::Showdata_Click);
+               // 
+               // textBoxName
+               // 
+               this->textBoxName->Location = System::Drawing::Point(77, 62);
+               this->textBoxName->Margin = System::Windows::Forms::Padding(4);
+               this->textBoxName->Name = L"textBoxName";
+               this->textBoxName->Size = System::Drawing::Size(132, 22);
+               this->textBoxName->TabIndex = 3;
+               // 
+               // textBoxCourse
+               // 
+               this->textBoxCourse->Location = System::Drawing::Point(77, 104);
+               this->textBoxCourse->Margin = System::Windows::Forms::Padding(4);
+               this->textBoxCourse->Name = L"textBoxCourse";
+               this->textBoxCourse->Size = System::Drawing::Size(132, 22);
+               this->textBoxCourse->TabIndex = 4;
+               // 
+               // textBoxSection
+               // 
+               this->textBoxSection->Location = System::Drawing::Point(77, 144);
+               this->textBoxSection->Margin = System::Windows::Forms::Padding(4);
+               this->textBoxSection->Name = L"textBoxSection";
+               this->textBoxSection->Size = System::Drawing::Size(132, 22);
+               this->textBoxSection->TabIndex = 5;
+               // 
+               // textBoxDay
+               // 
+               this->textBoxDay->Location = System::Drawing::Point(77, 189);
+               this->textBoxDay->Margin = System::Windows::Forms::Padding(4);
+               this->textBoxDay->Name = L"textBoxDay";
+               this->textBoxDay->Size = System::Drawing::Size(132, 22);
+               this->textBoxDay->TabIndex = 6;
+               // 
+               // textBoxTime
+               // 
+               this->textBoxTime->Location = System::Drawing::Point(79, 230);
+               this->textBoxTime->Margin = System::Windows::Forms::Padding(4);
+               this->textBoxTime->Name = L"textBoxTime";
+               this->textBoxTime->Size = System::Drawing::Size(132, 22);
+               this->textBoxTime->TabIndex = 7;
+               // 
+               // listBoxStudents
+               // 
+               this->listBoxStudents->FormattingEnabled = true;
+               this->listBoxStudents->ItemHeight = 16;
+               this->listBoxStudents->Location = System::Drawing::Point(16, 292);
+               this->listBoxStudents->Margin = System::Windows::Forms::Padding(4);
+               this->listBoxStudents->Name = L"listBoxStudents";
+               this->listBoxStudents->Size = System::Drawing::Size(443, 164);
+               this->listBoxStudents->TabIndex = 8;
+               // 
+               // labelName
+               // 
+               this->labelName->AutoSize = true;
+               this->labelName->Location = System::Drawing::Point(13, 62);
+               this->labelName->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+               this->labelName->Name = L"labelName";
+               this->labelName->Size = System::Drawing::Size(47, 16);
+               this->labelName->TabIndex = 9;
+               this->labelName->Text = L"Name:";
+               // 
+               // labelCourse
+               // 
+               this->labelCourse->AutoSize = true;
+               this->labelCourse->Location = System::Drawing::Point(15, 104);
+               this->labelCourse->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+               this->labelCourse->Name = L"labelCourse";
+               this->labelCourse->Size = System::Drawing::Size(53, 16);
+               this->labelCourse->TabIndex = 10;
+               this->labelCourse->Text = L"Course:";
+               // 
+               // labelSection
+               // 
+               this->labelSection->AutoSize = true;
+               this->labelSection->Location = System::Drawing::Point(13, 144);
+               this->labelSection->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+               this->labelSection->Name = L"labelSection";
+               this->labelSection->Size = System::Drawing::Size(55, 16);
+               this->labelSection->TabIndex = 11;
+               this->labelSection->Text = L"Section:";
+               // 
+               // labelDay
+               // 
+               this->labelDay->AutoSize = true;
+               this->labelDay->Location = System::Drawing::Point(13, 189);
+               this->labelDay->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+               this->labelDay->Name = L"labelDay";
+               this->labelDay->Size = System::Drawing::Size(35, 16);
+               this->labelDay->TabIndex = 12;
+               this->labelDay->Text = L"Day:";
+               // 
+               // labelTime
+               // 
+               this->labelTime->AutoSize = true;
+               this->labelTime->Location = System::Drawing::Point(13, 233);
+               this->labelTime->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+               this->labelTime->Name = L"labelTime";
+               this->labelTime->Size = System::Drawing::Size(41, 16);
+               this->labelTime->TabIndex = 13;
+               this->labelTime->Text = L"Time:";
+               // 
+               // label1
+               // 
+               this->label1->AutoSize = true;
+               this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                   static_cast<System::Byte>(0)));
+               this->label1->Location = System::Drawing::Point(104, 9);
+               this->label1->Name = L"label1";
+               this->label1->Size = System::Drawing::Size(266, 25);
+               this->label1->TabIndex = 14;
+               this->label1->Text = L"SectionwisewiseTimetable";
+               // 
+               // Sectionwise
+               // 
+               this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+               this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+               this->BackColor = System::Drawing::SystemColors::GradientInactiveCaption;
+               this->ClientSize = System::Drawing::Size(492, 561);
+               this->Controls->Add(this->label1);
+               this->Controls->Add(this->labelTime);
+               this->Controls->Add(this->labelDay);
+               this->Controls->Add(this->labelSection);
+               this->Controls->Add(this->labelCourse);
+               this->Controls->Add(this->labelName);
+               this->Controls->Add(this->listBoxStudents);
+               this->Controls->Add(this->textBoxTime);
+               this->Controls->Add(this->textBoxDay);
+               this->Controls->Add(this->textBoxSection);
+               this->Controls->Add(this->textBoxCourse);
+               this->Controls->Add(this->textBoxName);
+               this->Controls->Add(this->buttonShowData);
+               this->Controls->Add(this->buttonRemove);
+               this->Controls->Add(this->buttonAdd);
+               this->Margin = System::Windows::Forms::Padding(4);
+               this->Name = L"Sectionwise";
+               this->Text = L"MyForm";
+               this->ResumeLayout(false);
+               this->PerformLayout();
+
+           }
+
+           System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+               // Display student data when the form loads
+               DisplayStudentData();
+           }
+
+    private:
+        System::Windows::Forms::Button^ buttonAdd;
+        System::Windows::Forms::Button^ buttonRemove;
+        System::Windows::Forms::Button^ buttonShowData;
+        System::Windows::Forms::TextBox^ textBoxName;
+        System::Windows::Forms::TextBox^ textBoxCourse;
+        System::Windows::Forms::TextBox^ textBoxSection;
+        System::Windows::Forms::TextBox^ textBoxDay;
+        System::Windows::Forms::TextBox^ textBoxTime;
+        System::Windows::Forms::ListBox^ listBoxStudents;
+        System::Windows::Forms::Label^ labelName;
+        System::Windows::Forms::Label^ labelCourse;
+        System::Windows::Forms::Label^ labelSection;
+        System::Windows::Forms::Label^ labelDay;
+        System::Windows::Forms::Label^ labelTime;
+    };
 }
